@@ -1,4 +1,16 @@
 (function(exports) {
+
+  var assert = {
+     isTrue: function(assertion) {
+       if (!assertion) {
+         throw new Error('Assertion failed: ' + assertion + " is not truthy");
+       } else {
+         console.log("You've earned a gold star")
+       }
+     }
+   };
+
+
   function testNoteListHasAnArray() {
     var noteList = new NoteList();
 
@@ -21,5 +33,18 @@
   }
 };
   testNoteListRetainsObject();
+
+  function testNoteListReturnsNotes() {
+    var noteList = new NoteList();
+    noteList.create('note one');
+    noteList.create('note two');
+
+  assert.isTrue(typeof noteList.returnNotes()[1] === 'object');
+  assert.isTrue(noteList.returnNotes()[1].showNoteText() === 'note two');
+  assert.isTrue(noteList.returnNotes().length === 2);
+
+};
+  testNoteListReturnsNotes();
+
 
 })(this);
