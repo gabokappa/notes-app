@@ -8,5 +8,11 @@
     this.list.push(note);
   };
 
+  NoteList.prototype.showList = function() {
+    this.list.forEach(function(note){
+      return note.text;
+    });
+  };
+
   exports.NoteList = NoteList;
 })(this);
